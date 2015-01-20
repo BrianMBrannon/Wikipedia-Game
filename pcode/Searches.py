@@ -4,7 +4,7 @@ def generalGraphSearch(problem, fringe, name):
     closed = set()
 
 #    fringe.push([(problem.getStartState(), '', 1)])
-    fringe.push([makeNode(problem.getStartState())])
+    fringe.push([makeNode(problem.get_start_state())])
     #print("FIRST NODE: {}".format(makeNode(problem.getStartState)))
 
     while True:
@@ -13,14 +13,15 @@ def generalGraphSearch(problem, fringe, name):
             return retSolution(node) #FAILURE
         node = fringe.pop()
         nodeState = stateFromNode(node)
-        if problem.isGoalState(nodeState):
+        if problem.is_goal_state(nodeState):
             print("{} has succeeded.".format(name))
             #print("PATH:\n{}".format(retSolution(node)))
             return retSolution(node)
         if nodeState not in closed:
-            #print("{} wasn't in closed; now it is.".format(nodeState))
-            closed.add(nodeState)
-            for successor in problem.getSuccessors(nodeState):
+            #Modification to earlier generalization: instead of adding the state, I'm only adding the URL
+            #There's no need to revisit a URL regardless of the path it was reached
+            closed.add(nodeState[0])
+            for successor in problem.get_successors(nodeState):
                 newNode = list(node)
                 newNode.append(successor)
                 #print("Going to push this node: {}".format(newNode))
