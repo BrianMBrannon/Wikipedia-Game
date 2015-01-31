@@ -86,6 +86,7 @@ class WikipediaProblem:
 
         #Only expand the first <p> section; doing all <p> sections will take way too long
         #Using only this first <p> section useful information is retrieved anyway
+        #Later I will see if it would be better to use a certain amount of links (say 10) instead.
         for link in page.p.find_all('a'):
             #Filter out links not linking to useful content
             if link.string is not None and '&' not in link.get('href') and ':' not in link.get('href'):

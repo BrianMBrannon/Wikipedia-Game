@@ -1,10 +1,11 @@
 __author__ = 'bubba'
 
 def generalGraphSearch(problem, fringe, name):
+    #closed is a set of *URLs*.  General Graph Search used to incorporate entire states,
+    #but if a URL has already been visited, the new path is guaranteed to be >= the previous one.
     closed = set()
 
-#    fringe.push([(problem.getStartState(), '', 1)])
-    fringe.push([makeNode(problem.get_start_state())])
+    fringe.push([problem.get_start_state()])
     #print("FIRST NODE: {}".format(makeNode(problem.getStartState)))
 
     while True:
