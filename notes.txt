@@ -1,1 +1,5 @@
 1/31/2015:  I'm thinking about replacing my use of BeautifulSoup and nltk with tm and RCurl (in R).  It appears to work faster and more elegantly.  
+
+2/1/2015:  I'm fairly certain about making the switch to R; it is much faster.  Coming very close to finding the cosine similarity of two given wikipedia pages.  Methods might be a little redundant.
+
+
