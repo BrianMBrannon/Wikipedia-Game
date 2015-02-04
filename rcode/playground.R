@@ -42,21 +42,22 @@ findSimilarity <- function(url1, url2){
   v1 <- unlist(m1$dimnames)
   v2 <- unlist(m2$dimnames)
   
-  i <- is.na(match(v2, v1))
-  m2uniqueterms <- v2[i]
-  nextid <- length(v1) + 1
-  print(sum(i))
-  print(length(m2uniqueterms))
-  m3 <- rbind(nextid : (nextid + sum(i) - 1), m2uniqueterms, rep(0, sum(i)))
-  
+  i <- is.na(match(v2, v1)) #logical vector
+  m2uniqueterms <- v2[i] #terms in m2 that are not in m1
   i2 <- is.na(match(v1, v2))
-  m1uniqueterms <- v1[i]
-  nextid2 <- length(v2) + 1
-  print(sum(i2))
-  print(length(m1uniqueterms))
-  m4 <- rbind(nextid2 : (nextid2 + sum(i2) - 1), m1uniqueterms, rep(0, sum(i2)))
+  m1uniqueterms <- v1[i2] 
   
-  s <- cosineSimilarity(m3[,3], m4[,3])
+  nextid <- length(v1) + 1
+  df2 <- as.data.frame(c(m2$j, (nextid : (nextid + sum(i2))))) #start data frame off with ids
+  df2 <- cbind(df2, c(v2, m1uniqueterms))
+  df2 <- cbind(df2, c(m2$v, rep(0, sum(i2) + 1)))
+
+  nextid2 <- length(v2) + 1
+  df1 <- as.data.frame(c(m1$j, (nextid2 : (nextid2 + sum(i))))) 
+  df1 <- cbind(df1, c(v1, m2uniqueterms))
+  df1 <- cbind(df1, c(m1$v, rep(0, sum(i) + 1)))
+  
+  s <- cosineSimilarity(df1[,3], df2[,3])
   #TOFIX: m3[,3] and m4[,3] consist of CHARACTERS, m3 & m4 need to be data.frames instead
   #so that count values are expressed as integers instead of characters
   s

@@ -2,4 +2,6 @@
 
 2/1/2015:  I'm fairly certain about making the switch to R; it is much faster.  Coming very close to finding the cosine similarity of two given wikipedia pages.  Methods might be a little redundant.
 
+2/4/2015:  I've implemented the cosine similarity, but it results in values that don't seem to reflect a level of similarity I would have assigned myself.  For example, the similarity between Agammemnon and Ancient Greece is about 0.0408; that of Achilles and Agammemnon is 0.0404.  Given their titles alone I would assign similarities much closer to 1.  That of Achilles and Tomato, however, is 0.0304, which seems to reflect some sort of significant realization of the reality of how similar the two concepts are.  I am relatively pleased with the results.
+
 
