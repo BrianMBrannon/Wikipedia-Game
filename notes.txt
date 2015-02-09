@@ -4,4 +4,6 @@
 
 2/4/2015:  I've implemented the cosine similarity, but it results in values that don't seem to reflect a level of similarity I would have assigned myself.  For example, the similarity between Agammemnon and Ancient Greece is about 0.0408; that of Achilles and Agammemnon is 0.0404.  Given their titles alone I would assign similarities much closer to 1.  That of Achilles and Tomato, however, is 0.0304, which seems to reflect some sort of significant realization of the reality of how similar the two concepts are.  I am relatively pleased with the results.
 
+2/9/2015:  Cosine similarity between Achilles and Agammenmon is now 0.13, but it is below the average of two "random" Wikipedia pages, which is about 0.40.  The similarity between Achilles and tomato is also 0.12, which seems much too high.  Using random pages from Wikipedia, I calculate the average similarity between two random pages to be about 0.4, but this seems to be due to randomly selected pages being very small in length.  I may need to change the weight function to get a similarity that makes more sense.
+
 
